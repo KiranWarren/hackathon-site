@@ -4,20 +4,13 @@ export const QuoteContext = createContext([]);
 
 export function QuoteProvider(props) {
   let [quote, setQuote] = useState([]);
-  let url = "https://programming-quotesapi.vercel.app/api/random";
+  let url = process.env.REACT_APP_QUOTE_API_URL;
 
-  //   const retrieveQuote = async () => {
-  //     let response = await fetch(url);
-  //     let data = await response.json();
-  //     setQuote(data);
-  //   };
-
-  // REPLACE WITH API FETCH
-  const retrieveQuote = () => {
-    let data = { quote: "testtttinnng", author: "me" };
+  const retrieveQuote = async () => {
+    let response = await fetch(url);
+    let data = await response.json();
     setQuote(data);
   };
-  //----------------------
 
   useEffect(() => {
     retrieveQuote();

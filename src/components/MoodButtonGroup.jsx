@@ -6,25 +6,28 @@ export default function MoodButtonGroup() {
   const [moodValue, setMoodValue] = useState("1");
 
   const moods = [
-    { name: "Peace", value: "1" },
-    { name: "Rage", value: "2" },
+    { name: "Peaceful", value: "1" },
+    { name: "Cranky", value: "2" },
   ];
 
   return (
-    <ButtonGroup>
-      {moods.map((mood, index) => (
-        <ToggleButton
-          key={index}
-          id={`mood-${index}`}
-          type="radio"
-          variant={index % 2 ? "outline-danger" : "outline-success"}
-          value={mood.value}
-          checked={moodValue === mood.value}
-          onChange={(e) => setMoodValue(e.currentTarget.value)}
-        >
-          {mood.name}
-        </ToggleButton>
-      ))}
-    </ButtonGroup>
+    <>
+      <p>Choose your mood:</p>
+      <ButtonGroup>
+        {moods.map((mood, index) => (
+          <ToggleButton
+            key={index}
+            id={`mood-${index}`}
+            type="radio"
+            variant={index % 2 ? "outline-danger" : "outline-success"}
+            value={mood.value}
+            checked={moodValue === mood.value}
+            onChange={(e) => setMoodValue(e.currentTarget.value)}
+          >
+            {mood.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
+    </>
   );
 }

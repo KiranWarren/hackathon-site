@@ -1,28 +1,46 @@
 // TODO:
 // - Change to Button loading state (bootstrap)
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { QuoteContext } from "../contexts/QuoteContext";
 
 export function RegenQuoteButton() {
-  let { quote, setQuote } = useContext(QuoteContext);
+  let { setQuote } = useContext(QuoteContext);
+  let [isLoading, setLoading] = useState(false);
+  let url = process.env.REACT_APP_QUOTE_API_URL;
 
-  // REPLACE WITH API FETCH
-  const retrieveQuote2 = () => {
-    let data = { quote: "te2stt2t2tin2n2ng", author: "m222e" };
-    setQuote(data);
-  };
-  //----------------------
+  useEffect(() => {
+    const retrieveQuote = async () => {
+      let response = await fetch(url);
+      let data = await response.json();
+      setQuote(data);
+    };
+
+    if (isLoading) {
+      retrieveQuote().then(() => {
+        setLoading(false);
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
+  // const retrieveQuote = async () => {
+  //   let response = await fetch(url);
+  //   let data = await response.json();
+  //   setQuote(data);
+  // };
+
+  const handleClick = () => setLoading(true);
 
   return (
     <Button
-      variant="outline-success"
-      onClick={() => {
-        retrieveQuote2();
-      }}
+      variant="primary"
+      disabled={isLoading}
+      onClick={!isLoading ? handleClick : null}
     >
-      Generate Quote
+      {isLoading ? "Loading..." : "Generate Quote"}
     </Button>
   );
 }
