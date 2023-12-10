@@ -1,12 +1,14 @@
 import "./App.css";
-import { AppControls } from "./components/AppControls.jsx";
+import { RegenQuoteButton } from "./components/RegenQuoteButton.jsx";
 import QuoteDisplay from "./components/QuoteDisplay.jsx";
+import MoodButtonGroup from "./components/MoodButtonGroup.jsx";
 
 function App() {
   return (
     <div className="App">
       <QuoteDisplay />
-      <AppControls />
+      <RegenQuoteButton />
+      <MoodButtonGroup />
     </div>
   );
 }

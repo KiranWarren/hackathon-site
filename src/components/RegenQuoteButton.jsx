@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import { QuoteContext } from "../contexts/QuoteContext";
 
-export function AppControls() {
+export function RegenQuoteButton() {
   let { quote, setQuote } = useContext(QuoteContext);
 
   // REPLACE WITH API FETCH
