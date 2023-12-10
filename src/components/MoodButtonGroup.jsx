@@ -12,13 +12,13 @@ export default function MoodButtonGroup() {
 
   return (
     <ButtonGroup>
-      {moods.map((mood, idx) => (
+      {moods.map((mood, index) => (
         <ToggleButton
-          key={idx}
-          id={`mood-${idx}`}
+          key={index}
+          id={`mood-${index}`}
           type="radio"
-          variant={idx % 2 ? "outline-danger" : "outline-success"}
-          value="mood.value"
+          variant={index % 2 ? "outline-danger" : "outline-success"}
+          value={mood.value}
           checked={moodValue === mood.value}
           onChange={(e) => setMoodValue(e.currentTarget.value)}
         >
