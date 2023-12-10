@@ -11,7 +11,7 @@ export default function MoodButtonGroup() {
   ];
 
   return (
-    <>
+    <div id="moodButtons">
       <p>Choose your mood:</p>
       <ButtonGroup>
         {moods.map((mood, index) => (
@@ -28,6 +28,6 @@ export default function MoodButtonGroup() {
           </ToggleButton>
         ))}
       </ButtonGroup>
-    </>
+    </div>
   );
 }

@@ -36,6 +36,7 @@ export function RegenQuoteButton() {
 
   return (
     <Button
+      id="regenButton"
       variant="primary"
       disabled={isLoading}
       onClick={!isLoading ? handleClick : null}
