@@ -2,23 +2,28 @@ import "./App.css";
 import { RegenQuoteButton } from "./components/RegenQuoteButton.jsx";
 import QuoteDisplay from "./components/QuoteDisplay.jsx";
 import MoodButtonGroup from "./components/MoodButtonGroup.jsx";
+import { useContext } from "react";
+import { MoodContext } from "./contexts/MoodContext.jsx";
 
 function App() {
-  let height = window.innerHeight;
-  let width = window.innerWidth;
-  let photoUrl = `${process.env.REACT_APP_PHOTO_API_URL}/${width}/${height}`;
-  console.log(photoUrl);
+  let photoUrl = `${process.env.REACT_APP_PHOTO_API_URL}/${window.innerWidth}/${window.innerHeight}`;
+  let { mood } = useContext(MoodContext);
+
   return (
-    <div className="App" style={{ backgroundImage: `url(${photoUrl})` }}>
+    <div
+      className="App"
+      id={mood}
+      style={
+        mood === "Peaceful"
+          ? { backgroundImage: `url(${photoUrl})` }
+          : { backgroundImage: `url(${photoUrl}?grayscale&blur=5)` }
+      }
+    >
       <MoodButtonGroup />
       <QuoteDisplay />
       <RegenQuoteButton />
     </div>
   );
 }
-
-//  style={{
-//   backgroundImage: `url(${photoUrl})`,
-// }}
 
 export default App;

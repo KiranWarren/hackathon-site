@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QuoteProvider } from "./contexts/QuoteContext";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { MoodProvider } from "./contexts/MoodContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <QuoteProvider>
-      <App />
-    </QuoteProvider>
+    <MoodProvider>
+      <QuoteProvider>
+        <App />
+      </QuoteProvider>
+    </MoodProvider>
   </React.StrictMode>
 );
 

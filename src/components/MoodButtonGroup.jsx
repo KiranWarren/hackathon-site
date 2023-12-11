@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { MoodContext } from "../contexts/MoodContext";
 
 export default function MoodButtonGroup() {
   const [moodValue, setMoodValue] = useState("1");
+
+  let { setMood } = useContext(MoodContext);
 
   const moods = [
     { name: "Peaceful", value: "1" },
@@ -22,7 +25,10 @@ export default function MoodButtonGroup() {
             variant={index % 2 ? "outline-danger" : "outline-success"}
             value={mood.value}
             checked={moodValue === mood.value}
-            onChange={(e) => setMoodValue(e.currentTarget.value)}
+            onChange={(event) => {
+              setMoodValue(event.currentTarget.value);
+              setMood(mood.name);
+            }}
           >
             {mood.name}
           </ToggleButton>
