@@ -8,7 +8,22 @@
   align-items: center;
 }
 
-#Peaceful .quote {
+#Peaceful #quote {
   background-color: white;
   color: black;
+  border-style: solid black;
+  min-width: 50vw;
+  max-width: 90vw;
+  padding: 20px;
+  opacity: 75%;
+}
+
+#Cranky #quote {
+  background-color: red;
+  color: black;
+  border-style: solid black;
+  min-width: 50vw;
+  max-width: 90vw;
+  padding: 20px;
+  opacity: 75%;
 }
